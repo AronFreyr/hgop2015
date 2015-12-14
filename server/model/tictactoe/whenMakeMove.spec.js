@@ -177,7 +177,7 @@ describe('when make move command', function(){
 
       when={
         id:"01",
-        event:"MoveMade",
+        comm:"MakeMove",
         userName:"Aron",
         name:"Game01",
         x:1,

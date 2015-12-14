@@ -73,7 +73,7 @@ module.exports = function tictactoeCommandHandler(events) {
 
       if(notDone === false){
         return [{
-          id: cmd.id,
+          id: 01,
           event: "Draw",
           userName:"Aron",
           otherUserName: "Freyr",
