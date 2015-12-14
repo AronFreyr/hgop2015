@@ -62,6 +62,28 @@ module.exports = function tictactoeCommandHandler(events) {
           timeStamp: cmd.timeStamp
         }]
       }
+      var notDone = false;
+      for(var i = 0; i <= 2; i++){
+        for(var j = 0; j <= 2; j++){
+          if(gameState.board[i][j] ===''){
+            notDone = true;
+          }
+        }
+      }
+
+      if(notDone === false){
+        return [{
+          id: cmd.id,
+          event: "Draw",
+          userName: cmd.userName,
+          name:gameState.gameCreatedEvent.name,
+          x:cmd.x,
+          y:cmd.y,
+          side:cmd.side,
+          timeStamp: cmd.timeStamp
+        }]
+      }
+
       return [{
         id: cmd.id,
         event: "MoveMade",
