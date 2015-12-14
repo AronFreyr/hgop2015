@@ -88,4 +88,119 @@ describe('when make move command', function(){
 
     });
   });
+
+  describe("When no moves are left", function(){
+    it('No winner should produce a draw', function(){
+
+      given.push(
+      {
+        id:"01",
+        event:"MoveMade",
+        userName:"Aron",
+        name:"Game01",
+        x:1,
+        y:1,
+        side:'X',
+        timeStamp: "2015.12.02T11:30:50"
+      },
+      {
+        id:"01",
+        event:"MoveMade",
+        userName:"Freyr",
+        name:"Game01",
+        x:0,
+        y:1,
+        side:'O',
+        timeStamp: "2015.12.02T11:30:50"
+      },
+      {
+        id:"01",
+        event:"MoveMade",
+        userName:"Aron",
+        name:"Game01",
+        x:0,
+        y:2,
+        side:'X',
+        timeStamp: "2015.12.02T11:30:50"
+      },
+      {
+        id:"01",
+        event:"MoveMade",
+        userName:"Freyr",
+        name:"Game01",
+        x:2,
+        y:0,
+        side:'O',
+        timeStamp: "2015.12.02T11:30:50"
+      },
+      {
+        id:"01",
+        event:"MoveMade",
+        userName:"Aron",
+        name:"Game01",
+        x:0,
+        y:0,
+        side:'X',
+        timeStamp: "2015.12.02T11:30:50"
+      },
+      {
+        id:"01",
+        event:"MoveMade",
+        userName:"Freyr",
+        name:"Game01",
+        x:2,
+        y:2,
+        side:'O',
+        timeStamp: "2015.12.02T11:30:50"
+      },
+      {
+        id:"01",
+        event:"MoveMade",
+        userName:"Aron",
+        name:"Game01",
+        x:2,
+        y:1,
+        side:'X',
+        timeStamp: "2015.12.02T11:30:50"
+      },
+      {
+        id:"01",
+        event:"MoveMade",
+        userName:"Freyr",
+        name:"Game01",
+        x:1,
+        y:2,
+        side:'O',
+        timeStamp: "2015.12.02T11:30:50"
+      }
+      );
+
+      when={
+        id:"01",
+        event:"MoveMade",
+        userName:"Aron",
+        name:"Game01",
+        x:1,
+        y:0,
+        side:'X',
+        timeStamp: "2015.12.02T11:30:50"
+      };
+
+      then=[{
+        id:"01",
+        event:"Draw",
+        userName:"Aron",
+        otherUserName: "Freyr",
+        name:"Game01",
+        x:1,
+        y:0,
+        side:'X',
+        timeStamp: "2015.12.02T11:30:50"
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
+  });
 });
