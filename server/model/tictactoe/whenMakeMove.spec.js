@@ -34,7 +34,7 @@ describe('when make move command', function(){
       then=[{
         id:"01",
         event:"MoveMade",
-        userName:"Freyr",
+        userName:"Aron",
         name:"Game01",
         x:0,
         y:1,
