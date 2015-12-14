@@ -61,6 +61,15 @@ module.exports = function(config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
 
+   // reporters: ['progress', 'junit'],
+
+    //junitReporter: {
+       // outputDir: 'reports',
+      //  outputFile: undefined,
+      //  suite: '',
+      //  useBrowserName: true
+   // }
+
 
     // Start these browsers, currently available:
     // - Chrome

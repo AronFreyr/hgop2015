@@ -6,16 +6,16 @@ describe('when make move command', function(){
 
   beforeEach(function(){
     given= [{
-      id:"1234",
+      id:"01",
       event:"GameCreated",
-      name:"TheFirstGame",
-      userName: "Gulli",
+      name:"Game01",
+      userName: "Aron",
       timeStamp: "2015.12.02T11:29:44"
     }, {
-      id:"12345",
+      id:"01",
       event:"GameJoined",
-      userName: "Halli",
-      otherUserName: "Gulli",
+      userName: "Freyr",
+      otherUserName: "Aron",
       timeStamp: "2015.12.02T11:30:50"
     }];
   });
@@ -23,19 +23,19 @@ describe('when make move command', function(){
   describe('on new game', function(){
     it('should join game',function(){
       when={
-        id:"12345",
+        id:"01",
         comm:"MakeMove",
-        userName : "Halli",
+        userName : "Aron",
         x:0,
         y:1,
         side:'X',
         timeStamp: "2015.12.02T11:30:50"
       };
       then=[{
-        id:"12345",
+        id:"01",
         event:"MoveMade",
-        userName:"Halli",
-        name:"TheFirstGame",
+        userName:"Freyr",
+        name:"Game01",
         x:0,
         y:1,
         side:'X',
@@ -51,10 +51,10 @@ describe('when make move command', function(){
   describe("one previous move", function(){
     it('placing move in same place should be illegal',function(){
       given.push({
-        id:"12345",
+        id:"01",
         event:"MoveMade",
-        userName:"Halli",
-        name:"TheFirstGame",
+        userName:"Freyr",
+        name:"Game01",
         x:0,
         y:1,
         side:'X',
@@ -62,9 +62,9 @@ describe('when make move command', function(){
       });
 
       when={
-        id:"12345",
+        id:"01",
         comm:"MakeMove",
-        userName : "Halli",
+        userName : "Aron",
         x:0,
         y:1,
         side:'X',
@@ -72,10 +72,10 @@ describe('when make move command', function(){
       };
 
       then=[{
-        id:"12345",
+        id:"01",
         event:"IllegalMove",
-        userName:"Halli",
-        name:"TheFirstGame",
+        userName:"Aron",
+        name:"Game01",
         x:0,
         y:1,
         side:'X',
