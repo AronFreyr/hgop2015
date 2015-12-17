@@ -63,7 +63,15 @@ module.exports = function tictactoeCommandHandler(events) {
         }]
       }
 
-      if(this.boardFull(cmd.x, cmd.y)){
+      var boardFull = false;
+      for(var i = 0; i <= 2; i++){
+        for(var j = 0; j <= 2; j++){
+          if(gameState.board[i][j] ==='' && gameState.board[i][j] !== gameState.board[x][y]){
+            boardFull = true;
+          }
+        }
+      }
+      if(boardFull){
         return [{
           id: cmd.id,
           event: "Draw",
@@ -87,17 +95,6 @@ module.exports = function tictactoeCommandHandler(events) {
         side:cmd.side,
         timeStamp: cmd.timeStamp
       }]
-    },
-
-    "boardFull": function(x,y){
-      for(var i = 0; i <= 2; i++){
-        for(var j = 0; j <= 2; j++){
-          if(gameState.board[i][j] ==='' && gameState.board[i][j] !== gameState.board[x][y]){
-            return true;
-          }
-        }
-      }
-      return false;
     }
   };
 
