@@ -65,7 +65,7 @@ module.exports = function tictactoeCommandHandler(events) {
       var notDone = false;
       for(var i = 0; i <= 2; i++){
         for(var j = 0; j <= 2; j++){
-          if(gameState.board[i][j] ===''){
+          if(gameState.board[i][j] ==='' && gameState.board[i][j] !== gameState.board[cmd.x][cmd.y]){
             notDone = true;
           }
         }
@@ -73,13 +73,13 @@ module.exports = function tictactoeCommandHandler(events) {
 
       if(notDone === false){
         return [{
-          id: 01,
+          id: cmd.id,
           event: "Draw",
           userName:"Aron",
           otherUserName: "Freyr",
           name:"Game01",
-          x:1,
-          y:0,
+          x:cmd.x,
+          y:cmd.y,
           side:'X',
           timeStamp: "2015.12.02T11:30:50"
         }]
