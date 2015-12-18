@@ -88,8 +88,7 @@ module.exports = function tictactoeCommandHandler(events) {
                 x:cmd.x,
                 y:cmd.y,
                 side: cmd.side,
-                timeStamp: cmd.timeStamp,
-                //board: gameState.board
+                timeStamp: cmd.timeStamp
               }]
           }
         win = true;
@@ -97,19 +96,55 @@ module.exports = function tictactoeCommandHandler(events) {
           if(gameState.board[cmd.x][i] !== cmd.side && gameState.board[cmd.x][i] !== gameState.board[cmd.x][cmd.y]) {
             win = false;
           }
-       }
-          if(win === true){
-            return[{
-                id: cmd.id,
-                event: "Win",
-                userName: cmd.userName,
-                name: cmd.name,
-                x:cmd.x,
-                y:cmd.y,
-                side: cmd.side,
-                timeStamp: cmd.timeStamp
-              }]
+        }
+        if(win === true){
+          return[{
+              id: cmd.id,
+              event: "Win",
+              userName: cmd.userName,
+              name: cmd.name,
+              x:cmd.x,
+              y:cmd.y,
+              side: cmd.side,
+              timeStamp: cmd.timeStamp
+            }]
+        }
+        win = true;
+        for(var i = 0; i <= 2; i++){
+          if(gameState.board[i][i] !== cmd.side && gameState.board[i][i] !== gameState.board[cmd.x][cmd.y]) {
+            win = false;
           }
+        }
+        if(win === true){
+          return[{
+              id: cmd.id,
+              event: "Win",
+              userName: cmd.userName,
+              name: cmd.name,
+              x:cmd.x,
+              y:cmd.y,
+              side: cmd.side,
+              timeStamp: cmd.timeStamp
+            }]
+        }
+        win = true;
+        for(var i = 0, var j = 2; i <= 2, i >= 0; i++, j++){
+          if(gameState.board[i][j] !== cmd.side && gameState.board[i][j] !== gameState.board[cmd.x][cmd.y]) {
+            win = false;
+          }
+        }
+        if(win === true){
+          return[{
+              id: cmd.id,
+              event: "Win",
+              userName: cmd.userName,
+              name: cmd.name,
+              x:cmd.x,
+              y:cmd.y,
+              side: cmd.side,
+              timeStamp: cmd.timeStamp
+            }]
+        }
         
 
         return [{
