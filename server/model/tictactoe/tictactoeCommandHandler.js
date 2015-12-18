@@ -128,11 +128,17 @@ module.exports = function tictactoeCommandHandler(events) {
             }]
         }
         win = true;
-        for(var i = 0, var j = 2; i <= 2, i >= 0; i++, j++){
-          if(gameState.board[i][j] !== cmd.side && gameState.board[i][j] !== gameState.board[cmd.x][cmd.y]) {
-            win = false;
-          }
+        if(gameState.board[0][2] !== cmd.side && gameState.board[0][2] !== gameState.board[cmd.x][cmd.y]) {
+          win = false;
         }
+        if(gameState.board[1][1] !== cmd.side && gameState.board[1][1] !== gameState.board[cmd.x][cmd.y]) {
+          win = false;
+        }
+        if(gameState.board[2][0] !== cmd.side && gameState.board[2][0] !== gameState.board[cmd.x][cmd.y]) {
+          win = false;
+        }
+        
+
         if(win === true){
           return[{
               id: cmd.id,
