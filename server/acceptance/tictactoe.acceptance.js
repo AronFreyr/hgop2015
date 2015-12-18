@@ -17,11 +17,11 @@ describe('TEST ENV GET /api/gameHistory', function () {
   it('should execute same test using old style', function (done) {
 
     var command = {
-      id: "1234",
+      id: "01",
       gameId: "100000",
       comm: "CreateGame",
-      userName: "Gulli",
-      name: "TheFirstGame",
+      userName: "Aron",
+      name: "Game01",
       timeStamp: "2014-12-02T11:29:29"
     };
 
@@ -41,11 +41,11 @@ describe('TEST ENV GET /api/gameHistory', function () {
             res.body.should.be.instanceof(Array);
             should(res.body).eql(
               [{
-                "id": "1234",
+                "id": "01",
                 "gameId": "100000",
                 "event": "GameCreated",
-                "userName": "Gulli",
-                "name": "TheFirstGame",
+                "userName": "Aron",
+                "name": "Game01",
                 "timeStamp": "2014-12-02T11:29:29"
               }]);
             done();
@@ -55,8 +55,8 @@ describe('TEST ENV GET /api/gameHistory', function () {
 
 
    it('Should execute fluid API test', function (done) {
-     given(user("YourUser").createsGame("TheFirstGame"))
-     .expect("GameCreated").withName("TheFirstGame").isOk(done);
+     given(user("YourUser").createsGame("Game01"))
+     .expect("GameCreated").withName("Game01").isOk(done);
    });
 
 });
