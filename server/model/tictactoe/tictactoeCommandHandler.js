@@ -74,9 +74,10 @@ module.exports = function tictactoeCommandHandler(events) {
       if(boardFull === true){
         var win = true;
         for(var i = 0; i <= 2; i++){
-          if(gameState.board[i][cmd.y].side !== cmd.side && gameState.board[i][cmd.y] !== gameState.board[cmd.x][cmd.y]) {
+          if(gameState.board[i][cmd.y] !== cmd.side && gameState.board[i][cmd.y] !== gameState.board[cmd.x][cmd.y]) {
             win = false;
           }
+        }
           if(win === true){
             return[{
                 id: cmd.id,
@@ -87,21 +88,21 @@ module.exports = function tictactoeCommandHandler(events) {
                 x:cmd.x,
                 y:cmd.y,
                 side: cmd.side,
-                timeStamp: cmd.timeStamp
+                timeStamp: cmd.timeStamp,
+                //board: gameState.board
               }]
           }
-        }
         win = true;
         for(var i = 0; i <= 2; i++){
-          if(gameState.board[cmd.x][i].side !== cmd.side && gameState.board[cmd.x][i] !== gameState.board[cmd.x][cmd.y]) {
+          if(gameState.board[cmd.x][i] !== cmd.side && gameState.board[cmd.x][i] !== gameState.board[cmd.x][cmd.y]) {
             win = false;
           }
+       }
           if(win === true){
             return[{
                 id: cmd.id,
                 event: "Win",
                 userName: cmd.userName,
-                otherUserName: cmd.otherUserName,
                 name: cmd.name,
                 x:cmd.x,
                 y:cmd.y,
@@ -109,7 +110,6 @@ module.exports = function tictactoeCommandHandler(events) {
                 timeStamp: cmd.timeStamp
               }]
           }
-        }
         
 
         return [{

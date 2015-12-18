@@ -264,7 +264,6 @@ describe('when make move command', function(){
         id:"01",
         event:"Win",
         userName:"Aron",
-        otherUserName: "Freyr",
         name:"Game01",
         x:2,
         y:0,
