@@ -67,11 +67,26 @@ module.exports = function tictactoeCommandHandler(events) {
       for(var i = 0; i <= 2; i++){
         for(var j = 0; j <= 2; j++){
           if(gameState.board[i][j] ==='' && gameState.board[i][j] !== gameState.board[cmd.x][cmd.y]){
-            boardFull = "meeh";
+            boardFull = false;
           }
         }
       }
-      if(boardFull !== "meeh"){
+      if(boardFull === true){
+        for(var i = 0; i <= 2; i++){
+          if(gameState.board[i][cmd.y].side === cmd.side && gameState.board[i][cmd.y] !== gameState.board[cmd.x][cmd.y]) {
+          return[{
+             id: cmd.id,
+             event: "Win",
+             userName: cmd.userName,
+             otherUserName: cmd.otherUserName,
+             name: cmd.name,
+             x:cmd.x,
+             y:cmd.y,
+             side: cmd.side,
+             timeStamp: cmd.timeStamp
+}]
+}
+        }
         return [{
           id: cmd.id,
           event: "Draw",
