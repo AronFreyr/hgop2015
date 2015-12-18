@@ -20,34 +20,6 @@ describe('when make move command', function(){
     }];
   });
 
-  describe('on new game', function(){
-    it('should join game',function(){
-      when={
-        id:"01",
-        comm:"MakeMove",
-        userName : "Aron",
-        x:0,
-        y:1,
-        side:'X',
-        timeStamp: "2015.12.02T11:30:50"
-      };
-      then=[{
-        id:"01",
-        event:"MoveMade",
-        userName:"Aron",
-        name:"Game01",
-        x:0,
-        y:1,
-        side:'X',
-        timeStamp: "2015.12.02T11:30:50"
-      }];
-
-      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
-
-      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
-    })
-  });
-
   describe("one previous move", function(){
     it('placing move in same place should be illegal',function(){
       given.push({
@@ -274,7 +246,7 @@ describe('when make move command', function(){
       var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
 
       JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
-    },
+    });
     it('Wins diagonally', function(){
 
       given.push(
@@ -333,7 +305,7 @@ describe('when make move command', function(){
 
       then=[{
         id:"01",
-        event:"WinDiagonal",
+        event:"Win",
         userName:"Aron",
         name:"Game01",
         x:0,
