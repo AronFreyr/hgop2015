@@ -37,14 +37,10 @@ Nú höfum við skriptu sem leyfir deployment vélinni okkar að ssh-a sig inn �
 
 alltaf var jenkins gefið þetta workspace: /home/vagrant/src/tictactoe/hgop2015
 
-### Commit scriptan
+### Commit stage
 export DISPLAY=:0
 ./dockerbuild.sh
 
-### Firefox automatic deployment
-export DISPLAY=:0
-firefox
-
-### Acceptance scriptan
+### Acceptance stage
 export ACCEPTANCE_URL=http://127.0.0.1:9000
 grunt mochaTest:acceptance
